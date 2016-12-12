@@ -1,0 +1,6 @@
+{
+  "mongodb" : {
+    "path": "mongodb://localhost/sport",
+    "port": 27017
+  }
+}

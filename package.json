@@ -1,0 +1,24 @@
+{
+  "name": "sport_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "camo": "^0.12.3",
+    "jsonwebtoken": "^7.2.1",
+    "mysql": "^2.12.0",
+    "restify": "^4.3.0",
+    "restify-better-router": "^1.0.3",
+    "restify-router": "^0.2.1",
+    "validator": "^6.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2017": "^6.16.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
