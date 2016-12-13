@@ -7,6 +7,24 @@ class SportifController{
         server.post("/sportif", this.register);
     }
 
+    /**
+     * @api {post} /sportif Ajouter un sportif
+     * @apiName Ajouter un sportif
+     * @apiGroup User
+     *
+     * @apiExample Body :
+     *      {
+     *          nom : "nom",
+     *          prenom : "prenom",
+     *          email : "email",
+     *          password : "password"
+     *      }
+     *
+     * @apiSuccess
+     *      {String} Token.
+     * @apiError
+     *       {String} Message d'erreur.
+     */
     register(req, res, next)
     {
         const sportifMetier = new SportifMetier(req, mysql);

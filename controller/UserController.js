@@ -11,6 +11,22 @@ class UserController {
         server.get("/logout", this.logOut);
     }
 
+    /**
+     * @api {get} /entreprise Connexion d'un utilisateur
+     * @apiName Connexion d'un utilisateur
+     * @apiGroup User
+     *
+     * @apiExample Body :
+     *      {
+     *          email : "email",
+     *          password : "password"
+     *      }
+     *
+     * @apiSuccess
+     *      {String} Token.
+     * @apiError
+     *       {String} Message d'erreur.
+     */
     logIn(req, res, next)
     {
         const userMetier = new UserMetier(req, mysql);
@@ -27,14 +43,19 @@ class UserController {
     }
 
     /**
-     * @api {get} /user/:id Request User information
-     * @apiName GetUser
+     * @api {get} /logout Déconnexion d'un utilisateur
+     * @apiName Déconnexion d'un utilisateur
      * @apiGroup User
      *
-     * @apiParam {Number} id Users unique ID.
+     * @apiExample Body :
+     *      {
+     *          token : "token"
+     *      }
      *
-     * @apiSuccess {String} firstname Firstname of the User.
-     * @apiSuccess {String} lastname  Lastname of the User.
+     * @apiSuccess
+     *      {String} Message de succès.
+     * @apiError
+     *       {String} Message d'erreur.
      */
     logOut(req, res, next)
     {

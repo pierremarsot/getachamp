@@ -7,6 +7,25 @@ class EntrepriseController {
         server.post("/entreprise", this.register);
     }
 
+    /**
+     * @api {post} /entreprise Ajouter une entreprise
+     * @apiName Ajouter une entreprise
+     * @apiGroup User
+     *
+     * @apiExample Body :
+     *      {
+     *          nomEntreprise : "nomEntreprise",
+     *          nom : "nom",
+     *          prenom : "prenom",
+     *          email : "email",
+     *          password : "password"
+     *      }
+     *
+     * @apiSuccess
+     *      {String} Token.
+     * @apiError
+     *       {String} Message d'erreur.
+     */
     register(req, res, next)
     {
         const entrepriseMetier = new EntrepriseMetier(req, mysql);
