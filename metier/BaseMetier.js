@@ -1,9 +1,10 @@
 const authentificationMetier = require("./AuthentificationMetier");
 
 class BaseMetier {
-    constructor(req) {
+    constructor(req, mysql) {
         this._token = authentificationMetier.getToken(req);
         this._req = req;
+        this._mysql = mysql;
     }
 
     getToken() {

@@ -1,20 +1,19 @@
 let User = require('../model/User');
 let UserMetier = require("../metier/UserMetier");
+const mysql = require("../db");
 
 class UserController {
 
     constructor(server)
     {
         //Création routes
-        server.get("/user", this.logIn);
-        server.post("/user", this.register);
-        server.get("/logOut", this.logOut);
-        server.get("/api/actu", this.actualite);
+        server.get("/login", this.logIn);
+        server.get("/logout", this.logOut);
     }
 
     logIn(req, res, next)
     {
-        const userMetier = new UserMetier(req);
+        const userMetier = new UserMetier(req, mysql);
         userMetier.logIn((error, results) => {
             if(error)
             {
@@ -27,9 +26,19 @@ class UserController {
         });
     }
 
+    /**
+     * @api {get} /user/:id Request User information
+     * @apiName GetUser
+     * @apiGroup User
+     *
+     * @apiParam {Number} id Users unique ID.
+     *
+     * @apiSuccess {String} firstname Firstname of the User.
+     * @apiSuccess {String} lastname  Lastname of the User.
+     */
     logOut(req, res, next)
     {
-        const userMetier = new UserMetier(req);
+        const userMetier = new UserMetier(req, mysql);
         userMetier.logOut((error, results) => {
             if(error)
             {
@@ -40,28 +49,6 @@ class UserController {
             res.send(results.status, results.message);
             return next();
         });
-    }
-
-    register(req, res, next)
-    {
-        const userMetier = new UserMetier(req);
-        userMetier.register((error, results) => {
-            if(error)
-            {
-                res.send(error.status, error.message);
-                return next();
-            }
-
-            res.send(results.status, results.message);
-            return next();
-        });
-    }
-
-    actualite(req, res, next)
-    {
-        const userMetier = new UserMetier(req);
-        res.send(200);
-        next();
     }
 }
 

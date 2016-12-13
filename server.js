@@ -43,6 +43,12 @@ server.use(function(req, res, next){
 const UserController = require("./controller/UserController");
 const userController = new UserController(server);
 
+const SportifController = require("./controller/SportifController");
+const sportifController = new SportifController(server);
+
+const EntrepriseController = require("./controller/EntrepriseController");
+const entrepriseController = new EntrepriseController(server);
+
 // sub routes
 /*const place = require('./controller/UserController');
 
